@@ -86,3 +86,24 @@ def art(request):
     }    
     template_name = 'blog.html'
     return render_to_response(template_name, data)
+
+def themes(request):
+    all_themes = Theme.objects.all()
+    # themes = {                            
+    #             'Moonshine': 0, 
+    #             'Compass': 1, 
+    #             'Habit': 2, 
+    #             'Harbor': 3,                  #uncomment this when blank is
+    #             'Showtime': 4,                #removed in id=1 field in 
+    #             'Fever': 5,                   #blog_theme table in database
+    #             'Envoy': 6,
+    #             'Marginalia': 7,
+    #             'Distortion': 8
+    # }
+    # all_themes_sorted = sorted(all_themes, key=lambda i: themes[i.name])
+    data = {
+        'themes': all_themes
+    }
+    template_name = 'themes.html'
+    return render_to_response(template_name, data, context_instance=RequestContext(request))
+
